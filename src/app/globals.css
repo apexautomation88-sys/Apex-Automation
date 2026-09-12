@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@theme {
+  /* Surfaces — three z-planes: base -> elevated -> floating */
+  --color-base: #0a0a0b;
+  --color-elevated: #121214;
+  --color-floating: #1a1a1d;
+  --color-hairline: #26262b;
+  --color-hairline-bright: #35353d;
+
+  /* Ink */
+  --color-ink: #ededef;
+  --color-muted: #8a8a94;
+  --color-faint: #5c5c66;
+
+  /* Accent — signal lime. Used as a scalpel, never a paintbrush. */
+  --color-accent: #b8ff3c;
+  --color-accent-dim: #7fb329;
+  --color-accent-deep: #3d5c14;
+
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", monospace;
+
+  /* Spacing scale — intentional tokens, not arbitrary Tailwind steps */
+  --spacing-section: 7.5rem;
+  --spacing-section-lg: 11rem;
+
+  /* Layered, accent-tinted shadows. Never a flat shadow-md. */
+  --shadow-elevated: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px -8px rgb(0 0 0 / 0.6),
+    0 0 0 1px rgb(38 38 43 / 0.8);
+  --shadow-floating: 0 2px 4px rgb(0 0 0 / 0.5), 0 16px 48px -12px rgb(0 0 0 / 0.7),
+    0 0 40px -16px rgb(184 255 60 / 0.08), 0 0 0 1px rgb(53 53 61 / 0.9);
+  --shadow-accent: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 32px -8px rgb(184 255 60 / 0.35);
+
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Sticky nav is 64px — keep anchor targets clear of it. */
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background-color: var(--color-base);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  p { text-wrap: pretty; }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-base);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@layer utilities {
+  /* Layered radial gradients — a flat near-black page reads cheap. */
+  .bg-atmosphere {
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgb(184 255 60 / 0.07), transparent 70%),
+      radial-gradient(ellipse 60% 50% at 85% 10%, rgb(120 160 255 / 0.04), transparent 70%),
+      radial-gradient(ellipse 50% 40% at 10% 30%, rgb(184 255 60 / 0.03), transparent 70%);
+  }
+
+  .text-gradient-ink {
+    background: linear-gradient(180deg, #ffffff 0%, #9a9aa4 130%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hairline-x {
+    background-image: linear-gradient(90deg, transparent, var(--color-hairline) 15%, var(--color-hairline) 85%, transparent);
+  }
+}
+
+/* Entrance animations — transform + opacity only. */
+@keyframes rise {
+  from { opacity: 0; transform: translate3d(0, 16px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes packet {
+  0%   { opacity: 0; transform: translate3d(0, 0, 0); }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { opacity: 0; transform: translate3d(100%, 0, 0); }
+}
+
+@keyframes packet-y {
+  0%   { opacity: 0; transform: translate3d(0, 0, 0); }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { opacity: 0; transform: translate3d(0, 100%, 0); }
+}
+
+@keyframes node-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50%      { opacity: 1; transform: scale(1.06); }
+}
+
+.animate-rise {
+  animation: rise 0.7s var(--ease-spring) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
