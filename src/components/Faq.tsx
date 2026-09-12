@@ -2,28 +2,36 @@ import { Eyebrow, Section, SectionTitle } from "./ui";
 
 const FAQS = [
   {
-    q: "How much does it cost?",
-    a: "We quote one fixed number after the scoping call, priced against what the manual process already costs you. Most single-system builds land in a range we'll be upfront about on the call — we don't publish a number here because quoting before understanding your process is how agencies end up renegotiating halfway through.",
+    q: "This is life safety. I'm not putting AI in front of my customers.",
+    a: "Neither would we. Nothing we build makes a code call or a life-safety decision. It answers the phone at 2am, captures the site and the panel state, and pages your on-call tech faster than a message service does. Your certified people still make every judgment and sign every report.",
   },
   {
-    q: "Our data is a mess. Are we even ready?",
-    a: "Everyone's data is a mess. If it were clean and well-structured, you'd have automated this already. Cleaning and structuring it is part of the build, not a prerequisite you need to solve before calling us.",
+    q: "My inspection software already does that.",
+    a: "Tell us which one and we'll be specific. Inspect Point's assistant checks your report for missing photos. It doesn't call the property manager who's been sitting on a $4,200 proposal for six weeks. We work the gaps between your systems and your customer — the phone, the inbox, the follow-up. We don't rebuild your inspection forms.",
   },
   {
-    q: "Could our own developers just build this?",
-    a: "Sometimes, yes — and if that's genuinely true we'll say so. But your developers already have a roadmap, and automation work tends to sit at the bottom of it for a year. You're not comparing our price to zero. You're comparing it to the cost of the delay.",
+    q: "My customers want to talk to a person.",
+    a: "They do — during business hours. At 11pm they want someone to pick up. Right now that's a message service reading a script that can't tell a supervisory signal from a trouble. Every call still reaches your team. The difference is whether it reaches them in four minutes or the next morning.",
   },
   {
-    q: "What happens when it breaks?",
-    a: "Systems get monitored and alert on failure rather than silently doing nothing. You get 30 days of support after launch, full documentation, and the source code in your own repository. If you fire us, everything keeps running.",
+    q: "We're too busy to take on a project right now.",
+    a: "That's usually the real objection, and it's fair. So the first thing we build takes work away rather than adding it. About thirty minutes of your inspections manager's time, once. If month one costs you more than that, you don't pay for month two.",
   },
   {
-    q: "Do we need to hire someone to run it?",
-    a: "No. We build for the team you have. If a system needs a specialist to operate, we've built the wrong system.",
+    q: "What does it cost?",
+    a: "You were going to hire for this. An estimator runs $62–120K and an admin coordinator $35–50K, and both take months to ramp. We price well under that hire, and we scope it against the deficiency math from your own system — so the number has a denominator, not just a price tag.",
   },
   {
-    q: "How much of our time does this take?",
-    a: "Roughly two hours in week one to map the process, then about 30 minutes a week to review what we've built. We work against your real data so you aren't stuck writing specifications for us.",
+    q: "Our data is a mess — we're still on spreadsheets and paper.",
+    a: "About a third of small shops are on spreadsheets and another quarter on paper. That's a buying signal, not a blocker. We scope phase one to something that needs no clean data at all: inbound calls, or just the deficiency list from the last 90 days. We never lead with a data migration.",
+  },
+  {
+    q: "What happens when it gets something wrong?",
+    a: "Every outbound message is templated and approved before it sends. Every action is logged with a timestamp and an approver. Confidence thresholds escalate to a human, and there's a kill switch you can reach without calling us. In a liability trade, the governance is the feature.",
+  },
+  {
+    q: "I'm selling the business in a couple of years anyway.",
+    a: "Then this is among the highest-ROI things you can do. Buyers pay 6–10× EBITDA and they price two things: recurring revenue percentage and owner-dependence. Raising RMR and getting the follow-up out of your head and into a system moves both — the multiple, not just the profit.",
   },
 ];
 
@@ -36,11 +44,11 @@ export function Faq() {
       <div className="mt-14 divide-y divide-hairline border-y border-hairline">
         {FAQS.map((f) => (
           <details key={f.q} className="group">
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 text-lg font-medium text-ink transition-colors duration-200 hover:text-accent [&::-webkit-details-marker]:hidden">
+            <summary className="flex cursor-pointer list-none items-start justify-between gap-6 py-6 text-lg font-medium text-ink transition-colors duration-200 hover:text-accent [&::-webkit-details-marker]:hidden">
               {f.q}
               <span
                 aria-hidden
-                className="shrink-0 font-mono text-xl text-faint transition-transform duration-300 ease-[--ease-spring] group-open:rotate-45"
+                className="mt-1 shrink-0 font-mono text-xl text-faint transition-transform duration-300 ease-[--ease-spring] group-open:rotate-45"
               >
                 +
               </span>

@@ -7,6 +7,7 @@ import { Method } from "@/components/Method";
 import { CaseStudies } from "@/components/CaseStudies";
 import { RoiCalculator } from "@/components/RoiCalculator";
 import { Guarantee } from "@/components/Guarantee";
+import { HardLines } from "@/components/HardLines";
 import { Offer } from "@/components/Offer";
 import { Faq } from "@/components/Faq";
 import { BookingSection } from "@/components/BookingSection";
@@ -22,12 +23,13 @@ export default function Home() {
         <Hero />
         <ProofBand />
         <Problem />
-        <WhatWeBuild />
-        <Method />
-        <CaseStudies />
         <Section id="roi" className="border-t border-hairline">
           <RoiCalculator />
         </Section>
+        <WhatWeBuild />
+        <HardLines />
+        <Method />
+        <CaseStudies />
         <Guarantee />
         <Offer />
         <Faq />

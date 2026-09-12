@@ -5,7 +5,11 @@ import { Eyebrow, SectionTitle, Lede, CtaButton } from "./ui";
 import { CTA } from "@/lib/site";
 
 const fmt = (n: number) =>
-  n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+  n.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  });
 
 function Slider({
   label,
@@ -13,7 +17,7 @@ function Slider({
   min,
   max,
   step,
-  suffix,
+  format,
   onChange,
 }: {
   label: string;
@@ -21,20 +25,17 @@ function Slider({
   min: number;
   max: number;
   step: number;
-  suffix: string;
+  format: (v: number) => string;
   onChange: (v: number) => void;
 }) {
   const id = useId();
   return (
     <div>
-      <div className="flex items-baseline justify-between">
+      <div className="flex items-baseline justify-between gap-4">
         <label htmlFor={id} className="text-sm text-muted">
           {label}
         </label>
-        <span className="font-mono text-sm text-ink">
-          {value}
-          {suffix}
-        </span>
+        <span className="shrink-0 font-mono text-sm text-ink">{format(value)}</span>
       </div>
       <input
         id={id}
@@ -51,24 +52,28 @@ function Slider({
 }
 
 export function RoiCalculator() {
-  const [hours, setHours] = useState(15);
-  const [rate, setRate] = useState(35);
-  const [people, setPeople] = useState(2);
+  const [deficiencies, setDeficiencies] = useState(2000);
+  const [avgRepair, setAvgRepair] = useState(650);
+  const [closeRate, setCloseRate] = useState(25);
 
-  const annualCost = hours * rate * people * 52;
-  // Deliberately conservative: we claim 70% of the manual work is automatable,
-  // not 100%. Overclaiming here is what gets caught on the sales call.
-  const recovered = annualCost * 0.7;
+  const addressable = deficiencies * avgRepair;
+  const bookedNow = addressable * (closeRate / 100);
+
+  // Deliberately conservative: we model +20 points, roughly half the 25→70
+  // lift observed when the quote path gets systematized. Capped at 70.
+  const improved = Math.min(closeRate + 20, 70);
+  const bookedAfter = addressable * (improved / 100);
+  const recovered = bookedAfter - bookedNow;
 
   return (
     <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-16">
       <div>
-        <Eyebrow>&quot;It&apos;s too expensive&quot;</Eyebrow>
-        <SectionTitle>Compared to what you&apos;re already spending?</SectionTitle>
+        <Eyebrow>Your deficiency leak</Eyebrow>
+        <SectionTitle>Run it against your own numbers.</SectionTitle>
         <Lede>
-          The manual process is not free. It is the most expensive thing in your
-          business — it is just billed as salary, so nobody flags it. Move the
-          sliders to your own numbers.
+          This is the diagnostic question worth asking before anything else: of
+          the deficiencies your techs wrote up last quarter, what percentage
+          turned into a signed repair? Most shops land near 25%.
         </Lede>
         <div className="mt-9 hidden lg:block">
           <CtaButton href="#book">{CTA}</CtaButton>
@@ -78,54 +83,62 @@ export function RoiCalculator() {
       <div className="rounded-2xl border border-hairline bg-elevated p-7 shadow-[--shadow-floating] md:p-9">
         <div className="space-y-7">
           <Slider
-            label="Hours per week on manual work"
-            value={hours}
-            min={1}
-            max={60}
-            step={1}
-            suffix=" hrs"
-            onChange={setHours}
+            label="Deficiencies written up per year"
+            value={deficiencies}
+            min={100}
+            max={6000}
+            step={100}
+            format={(v) => v.toLocaleString("en-US")}
+            onChange={setDeficiencies}
           />
           <Slider
-            label="People doing it"
-            value={people}
-            min={1}
-            max={15}
-            step={1}
-            suffix=""
-            onChange={setPeople}
+            label="Average repair value"
+            value={avgRepair}
+            min={150}
+            max={3000}
+            step={50}
+            format={fmt}
+            onChange={setAvgRepair}
           />
           <Slider
-            label="Fully-loaded hourly cost"
-            value={rate}
-            min={15}
-            max={150}
-            step={5}
-            suffix=" /hr"
-            onChange={setRate}
+            label="Current close rate"
+            value={closeRate}
+            min={5}
+            max={65}
+            step={1}
+            format={(v) => `${v}%`}
+            onChange={setCloseRate}
           />
         </div>
 
         <div className="mt-9 space-y-4 border-t border-hairline pt-7">
           <div className="flex items-baseline justify-between gap-4">
-            <span className="text-sm text-muted">You spend annually</span>
-            <span className="font-display text-2xl font-bold text-ink">
-              {fmt(annualCost)}
+            <span className="text-sm text-muted">Addressable repair work</span>
+            <span className="font-display text-xl font-bold text-ink">
+              {fmt(addressable)}
             </span>
           </div>
           <div className="flex items-baseline justify-between gap-4">
             <span className="text-sm text-muted">
-              Recoverable at a conservative 70%
+              Never booked at {closeRate}%
+            </span>
+            <span className="font-display text-xl font-bold text-alarm">
+              {fmt(addressable - bookedNow)}
+            </span>
+          </div>
+          <div className="flex items-baseline justify-between gap-4 border-t border-hairline pt-4">
+            <span className="text-sm text-muted">
+              Recovered at {improved}% — half the observed lift
             </span>
             <span className="font-display text-3xl font-bold text-accent md:text-4xl">
-              {fmt(recovered)}
+              +{fmt(recovered)}
             </span>
           </div>
         </div>
 
         <p className="mt-6 font-mono text-[11px] leading-relaxed text-faint">
-          Estimate based on your inputs — not a quote, and not a client result. We
-          give you a real number on the call.
+          Estimate from your inputs — not a quote, and not a client result. On the
+          call we pull the real number out of your own system.
         </p>
 
         <div className="mt-7 lg:hidden">

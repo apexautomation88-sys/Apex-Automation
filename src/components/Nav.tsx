@@ -1,10 +1,10 @@
 import { CTA, site } from "@/lib/site";
 
 const links = [
-  { href: "#work", label: "Work" },
+  { href: "#systems", label: "Systems" },
   { href: "#method", label: "Method" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#faq", label: "FAQ" },
+  { href: "#governance", label: "Hard lines" },
+  { href: "#faq", label: "Objections" },
 ];
 
 export function Nav() {

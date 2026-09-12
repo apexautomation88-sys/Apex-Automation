@@ -23,9 +23,10 @@ export function Guarantee() {
           </h2>
 
           <p className="mt-6 max-w-2xl text-lg text-muted">
-            We agree on the result before we start — in writing, in numbers. If the
-            system we ship doesn&apos;t hit it, you don&apos;t pay. You keep the
-            code either way.
+            We agree on the number before we start — in writing. We baseline it
+            before anything switches on, so there&apos;s no argument later about
+            what moved. If the system we ship doesn&apos;t hit it, you don&apos;t
+            pay. You keep the code either way.
           </p>
 
           <p className="mt-8 rounded-xl border border-dashed border-accent-deep bg-accent/5 p-4 font-mono text-[11px] leading-relaxed text-accent-dim">

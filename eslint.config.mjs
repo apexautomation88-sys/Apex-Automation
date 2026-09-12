@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vercel's generated build output — not source, and its bundled vendor code
+    // trips no-this-alias / no-require-imports.
+    ".vercel/**",
+    "temporary screenshots/**",
   ]),
 ]);
 

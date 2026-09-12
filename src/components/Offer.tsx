@@ -2,19 +2,20 @@ import { Eyebrow, Section, SectionTitle, Lede, CtaButton } from "./ui";
 import { CTA } from "@/lib/site";
 
 const INCLUDED = [
-  "One process, mapped end to end",
-  "The system built against your real data",
-  "Every integration wired to your existing tools",
-  "Your team trained on it",
-  "Written documentation",
-  "Source code in your repository — you own it",
-  "30 days of support after launch",
+  "One bleeding number, baselined before we switch anything on",
+  "The system built against your real data — not a sandbox",
+  "Wired into your inspection platform, not layered on top of it",
+  "Your price book, your code language, your signature",
+  "Full audit trail — timestamped, attributed, exportable",
+  "Your team trained, documentation written",
+  "A kill switch you can reach without calling us",
 ];
 
 const NOT_INCLUDED = [
-  "Hourly billing",
-  "A strategy deck",
-  "A six-month discovery phase",
+  "Code interpretation presented as authoritative",
+  "Automatic submission to an AHJ",
+  "Any life-safety judgment made by a machine",
+  "A data migration before we deliver anything",
   "Lock-in to our hosting",
 ];
 
@@ -22,11 +23,13 @@ export function Offer() {
   return (
     <Section id="pricing" className="border-t border-hairline">
       <Eyebrow>The engagement</Eyebrow>
-      <SectionTitle>One process. One fixed price. Live in 30 days.</SectionTitle>
+      <SectionTitle>
+        Priced against the hire you were about to make.
+      </SectionTitle>
       <Lede>
-        We scope it on the call and quote one number. If it changes, it changes
-        because you asked — never because we discovered something we should have
-        caught in scoping.
+        You already know what an estimator costs. We scope on the call, quote one
+        number, and anchor it to the repair revenue sitting unbooked in your own
+        system — so it&apos;s a comparison, not a price tag.
       </Lede>
 
       <div className="mt-14 grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
@@ -48,11 +51,11 @@ export function Offer() {
               Investment
             </p>
             <p className="mt-2 font-display text-3xl font-bold text-ink">
-              Scoped on the call
+              A fraction of that hire
             </p>
             <p className="mt-2 text-sm text-muted">
-              Priced against what the manual process already costs you — so the
-              number has a denominator, not just a price tag.
+              Scoped on the call. It doesn&apos;t take three months to ramp, and it
+              doesn&apos;t quit in year two.
             </p>
           </div>
 
@@ -73,9 +76,9 @@ export function Offer() {
           </ul>
 
           <p className="mt-9 border-t border-hairline pt-7 text-[15px] text-muted">
-            If we don&apos;t think automation will pay for itself in your case,
-            we&apos;ll tell you on the call and you can keep the map. That
-            conversation costs you 30 minutes.
+            If we don&apos;t think this pays for itself in your shop, we&apos;ll say
+            so on the call and you can keep the diagnosis. That conversation costs
+            you half an hour.
           </p>
         </div>
       </div>

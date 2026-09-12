@@ -13,6 +13,12 @@
   --color-muted: #8a8a94;
   --color-faint: #5c5c66;
 
+  /* Panel states — the three conditions on a fire alarm control panel.
+     Used as severity tags so the page reads as trade-native, not generic SaaS. */
+  --color-alarm: #ff5247;
+  --color-supervisory: #f0a62e;
+  --color-trouble: #6fcf87;
+
   /* Accent — signal lime. Used as a scalpel, never a paintbrush. */
   --color-accent: #b8ff3c;
   --color-accent-dim: #7fb329;

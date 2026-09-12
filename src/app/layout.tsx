@@ -23,21 +23,31 @@ const jetbrains = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${site.domain}`),
-  title: `${site.name} — AI automation, built and shipped in 30 days`,
+  title: `${site.name} — AI systems for fire & life safety contractors`,
   description:
-    "We don't advise on automation. We build it. Apex Automation ships working AI systems into your business in 30 days — or you don't pay.",
+    "Your techs find the deficiencies. Most never become proposals. Apex Automation builds the deficiency-to-quote, after-hours voice, and access-coordination systems that close the gap — using your price book and your signature.",
+  keywords: [
+    "fire protection automation",
+    "fire alarm inspection software automation",
+    "NFPA 25 ITM",
+    "deficiency to quote",
+    "fire and life safety contractor AI",
+    "sprinkler inspection automation",
+    "fire alarm monitoring RMR",
+  ],
   openGraph: {
-    title: `${site.name} — AI automation, built and shipped in 30 days`,
+    title: `${site.name} — AI systems for fire & life safety contractors`,
     description:
-      "We don't advise on automation. We build it. Working systems in 30 days, or you don't pay.",
+      "You're not losing money on inspections. You're losing it after the report is filed.",
     url: `https://${site.domain}`,
     siteName: site.name,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — AI automation, built and shipped in 30 days`,
-    description: "Working AI systems in 30 days, or you don't pay.",
+    title: `${site.name} — AI systems for fire & life safety contractors`,
+    description:
+      "You're not losing money on inspections. You're losing it after the report is filed.",
   },
   robots: { index: true, follow: true },
 };
@@ -47,10 +57,10 @@ const jsonLd = {
   "@type": "ProfessionalService",
   name: site.name,
   description:
-    "AI automation implementation agency. We design, build, and ship working automation systems.",
+    "AI automation implementation for fire & life safety contractors — deficiency-to-quote, after-hours call handling, inspection scheduling and AHJ report QA.",
   url: `https://${site.domain}`,
   email: site.email,
-  serviceType: "AI Automation Implementation",
+  serviceType: "AI automation for fire protection and life safety contractors",
   areaServed: "Worldwide",
 };
 

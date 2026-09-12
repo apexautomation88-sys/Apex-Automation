@@ -2,29 +2,32 @@ import { Eyebrow, Section, SectionTitle, Lede, Card } from "./ui";
 
 const COSTS = [
   {
-    stat: "The copy-paste tax",
-    body: "Someone on payroll moves data between three systems that don't talk. Every day. Forever.",
+    stat: "The deficiency that never got quoted",
+    body: "Your tech documented it. It's in the report. Six weeks later nobody has priced it, and the property manager has forgotten the conversation happened.",
   },
   {
-    stat: "The 4-hour reply",
-    body: "A lead fills in your form at 9pm. Nobody sees it until 1pm tomorrow. Your competitor answered at 9:04.",
+    stat: "The truck that couldn't get in",
+    body: "Tenant unreachable, sprinkler room key missing, kitchen mid-service. The roll is burned, the route is broken, and nobody gets billed for the hour.",
   },
   {
-    stat: "The tribal knowledge",
-    body: "One person knows how the process actually works. When they're out, it stops. When they quit, it breaks.",
+    stat: "The 2am trouble signal",
+    body: "It reaches a message service that can't tell a supervisory from a trouble. Your on-call tech hears about it in the morning — or the customer calls somebody else.",
   },
 ];
 
 export function Problem() {
   return (
     <Section>
-      <Eyebrow>The real cost</Eyebrow>
+      <Eyebrow>Where the money leaks</Eyebrow>
       <SectionTitle>
-        Manual work doesn&apos;t feel expensive. That&apos;s exactly why it survives.
+        The inspection is the annuity. The repair is the profit — and it&apos;s
+        the one that leaks.
       </SectionTitle>
       <Lede>
-        It never shows up as a line item. It shows up as headcount you had to hire,
-        deals that went cold, and a team doing work they resent.
+        ITM revenue is code-mandated and predictable. Nobody opts out of NFPA 25.
+        The margin lives in what the inspection finds, and that&apos;s exactly
+        where the process stops being a system and starts being somebody&apos;s
+        memory.
       </Lede>
 
       <div className="mt-14 grid gap-5 md:grid-cols-3">
@@ -40,10 +43,12 @@ export function Problem() {
 
       <div className="mt-10 rounded-2xl border border-hairline bg-elevated p-7 shadow-[--shadow-elevated] md:p-9">
         <p className="max-w-3xl text-lg text-ink md:text-xl">
-          Do the arithmetic once. One person, 15 hours a week, on work a system could
-          do — that&apos;s roughly{" "}
-          <span className="text-accent">750 hours a year</span> you are already
-          paying for. The automation isn&apos;t the new cost. It&apos;s the refund.
+          Two thousand deficiencies a year at a $650 average repair is{" "}
+          <span className="text-accent">$1.3M</span> of addressable work sitting
+          inside your own system. At a 25% close rate, roughly{" "}
+          <span className="text-alarm">$975,000</span> of it never gets booked.
+          Same techs, same buildings, same findings — the gap is entirely in what
+          happens after the report is filed.
         </p>
       </div>
     </Section>

@@ -2,8 +2,8 @@ import { Section, Eyebrow, SectionTitle, Lede } from "./ui";
 import { CalendlyEmbed } from "./Booking";
 
 const PROMISES = [
-  "We map where your time actually goes",
-  "We name the one process worth automating first",
+  "We find your deficiency close rate — in your own system",
+  "We name the one leak worth fixing first",
   "You get a rough number — cost and payback",
 ];
 
@@ -15,8 +15,9 @@ export function BookingSection() {
           <Eyebrow>Book the teardown</Eyebrow>
           <SectionTitle>30 minutes. No pitch.</SectionTitle>
           <Lede>
-            You leave with a map of your own operation whether or not you ever hire
-            us. Here&apos;s exactly what happens on the call:
+            You leave with a diagnosis of your own operation whether or not you
+            ever hire us. Nothing on this call touches your code work. Here&apos;s
+            exactly what happens:
           </Lede>
 
           <ul className="mt-8 space-y-3.5">

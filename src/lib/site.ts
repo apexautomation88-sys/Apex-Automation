@@ -6,7 +6,7 @@ export const site = {
   domain: "apexautomation.com", // PLACEHOLDER — confirm real domain
   email: "apexautomation88@gmail.com",
   calendly: "https://calendly.com/apexautomation88/30min",
-  tagline: "We build the automations your team is doing by hand.",
+  tagline: "AI systems for fire & life safety contractors.",
 } as const;
 
-export const CTA = "Book a free teardown";
+export const CTA = "Book a teardown call";

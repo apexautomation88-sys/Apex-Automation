@@ -2,24 +2,24 @@ import { Eyebrow, Section, SectionTitle, Lede } from "./ui";
 
 const STEPS = [
   {
-    day: "Day 0",
-    title: "Teardown call",
-    body: "30 minutes. We map where your time actually goes and pick the one process with the highest return. You get the map whether or not you hire us.",
+    day: "The call",
+    title: "We find the bleeding number",
+    body: "Thirty minutes. We look at deficiency close rate, missed calls, and failed access events, and pick the one we can move in four weeks. You get the diagnosis whether or not you hire us.",
   },
   {
-    day: "Days 1–5",
-    title: "Scope and fixed quote",
-    body: "We write down exactly what gets built, what it connects to, and what it costs. One number. No hourly billing, no scope creep clause.",
+    day: "Days 1–30",
+    title: "One number, instrumented first",
+    body: "We baseline it before we turn anything on — without a baseline there's no honest renewal conversation later. Then we ship the first system. About 30 minutes of your inspections manager's time, once.",
   },
   {
-    day: "Days 6–25",
-    title: "Build",
-    body: "We build against your real data, not a sandbox. You see working software at the end of every week — not a status update.",
+    day: "Days 31–60",
+    title: "Close the loop",
+    body: "Follow-up sequences, approval routing, and CRM hygiene, so the proposal that got drafted actually gets decided instead of sitting in someone's drafts folder.",
   },
   {
-    day: "Days 26–30",
-    title: "Ship and hand over",
-    body: "Live in production, your team trained, documentation written, code in your repository. You own all of it.",
+    day: "Days 61–90",
+    title: "Expand along the calendar",
+    body: "Renewals, the five-year internals, extinguisher hydro, the copper-sunset list. The calendar never stops, which is what makes this permanent rather than a project.",
   },
 ];
 
@@ -27,17 +27,18 @@ export function Method() {
   return (
     <Section id="method" className="border-t border-hairline">
       <Eyebrow>How it works</Eyebrow>
-      <SectionTitle>Thirty days, four checkpoints, no mystery.</SectionTitle>
+      <SectionTitle>Your workload is a calendar, not a funnel.</SectionTitle>
       <Lede>
-        The reason automation projects fail isn&apos;t technical. It&apos;s that
-        nobody agreed what &quot;done&quot; meant. We fix that on day one.
+        Work is due when it&apos;s due. Slip an inspection and it compounds into
+        next quarter, because capacity is inelastic when the calendar is. We build
+        against that rhythm instead of fighting it.
       </Lede>
 
       <ol className="mt-14 space-y-px">
         {STEPS.map((s, i) => (
           <li
             key={s.day}
-            className="group relative grid gap-3 border border-hairline bg-elevated p-7 transition-colors duration-300 first:rounded-t-2xl last:rounded-b-2xl hover:bg-floating md:grid-cols-[160px_1fr] md:gap-8 md:p-9"
+            className="group relative grid gap-3 border border-hairline bg-elevated p-7 transition-colors duration-300 first:rounded-t-2xl last:rounded-b-2xl hover:bg-floating md:grid-cols-[170px_1fr] md:gap-8 md:p-9"
           >
             <div className="flex items-center gap-3">
               <span className="font-mono text-xs text-accent">
