@@ -123,3 +123,21 @@ the loading state and looks like a bug.
 
 **Turbopack root.** A stray `package-lock.json` in `C:\Users\brian` makes Next infer
 the home directory as the workspace root. `next.config.ts` pins `turbopack.root`.
+
+**Legal pages.** `/privacy`, `/terms`, `/cookies`, `/accessibility` share
+`src/components/LegalPage.tsx`; entity, state, and effective date live in `legal` in
+`src/lib/site.ts`. The documents describe the site's *actual* data footprint — no
+analytics, no first-party cookies, Calendly as the only third party. **Adding any
+analytics, pixel, cookie, or new third-party embed makes them false**: update the
+Privacy and Cookie policies and bump `legal.effectiveDate` in the same change.
+
+**Accessibility.** The statement claims WCAG 2.2 AA testing, so keep it true. Every
+text color must clear 4.5:1 on base, elevated, *and* floating surfaces — `faint` once
+shipped at 2.6:1. Grid children holding wide content (tables, iframes, big figures)
+need `min-w-0`, or they force the page wider than 320px. The pipeline animation needs
+its pause button (WCAG 2.2.2). The audit script lives outside the repo; re-run axe,
+the first-Tab skip-link check, and 320px reflow after layout changes.
+
+**Restarting `next start`.** Stopping the background task kills only the npm wrapper
+— the `next` node process survives, keeps port 3000, and silently serves the *old*
+build. Kill whatever owns the port before restarting, or you'll test stale code.

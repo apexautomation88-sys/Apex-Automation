@@ -96,7 +96,7 @@ export function CalendlyEmbed() {
   return (
     <div
       ref={sentinel}
-      className="overflow-hidden rounded-2xl border border-hairline bg-elevated shadow-[--shadow-floating]"
+      className="min-w-0 overflow-hidden rounded-2xl border border-hairline bg-elevated shadow-[--shadow-floating]"
     >
       <div className="relative" style={{ minHeight: "700px" }}>
         {/* Sits behind the widget; the iframe covers it once Calendly mounts. */}
@@ -116,7 +116,7 @@ export function CalendlyEmbed() {
           </a>
         </div>
 
-        <div ref={target} className="relative" style={{ minWidth: "320px", height: "700px" }} />
+        <div ref={target} className="relative" style={{ height: "700px" }} />
       </div>
     </div>
   );

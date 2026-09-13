@@ -67,7 +67,7 @@ export function RoiCalculator() {
 
   return (
     <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-16">
-      <div>
+      <div className="min-w-0">
         <Eyebrow>Your deficiency leak</Eyebrow>
         <SectionTitle>Run it against your own numbers.</SectionTitle>
         <Lede>
@@ -80,7 +80,7 @@ export function RoiCalculator() {
         </div>
       </div>
 
-      <div className="rounded-2xl border border-hairline bg-elevated p-7 shadow-[--shadow-floating] md:p-9">
+      <div className="min-w-0 rounded-2xl border border-hairline bg-elevated p-5 shadow-[--shadow-floating] sm:p-7 md:p-9">
         <div className="space-y-7">
           <Slider
             label="Deficiencies written up per year"
@@ -111,15 +111,15 @@ export function RoiCalculator() {
           />
         </div>
 
-        <div className="mt-9 space-y-4 border-t border-hairline pt-7">
+        <div aria-live="polite" className="mt-9 space-y-4 border-t border-hairline pt-7">
           <div className="flex items-baseline justify-between gap-4">
-            <span className="text-sm text-muted">Addressable repair work</span>
+            <span className="min-w-0 text-sm text-muted">Addressable repair work</span>
             <span className="font-display text-xl font-bold text-ink">
               {fmt(addressable)}
             </span>
           </div>
           <div className="flex items-baseline justify-between gap-4">
-            <span className="text-sm text-muted">
+            <span className="min-w-0 text-sm text-muted">
               Never booked at {closeRate}%
             </span>
             <span className="font-display text-xl font-bold text-alarm">
@@ -127,10 +127,10 @@ export function RoiCalculator() {
             </span>
           </div>
           <div className="flex items-baseline justify-between gap-4 border-t border-hairline pt-4">
-            <span className="text-sm text-muted">
+            <span className="min-w-0 text-sm text-muted">
               Recovered at {improved}% — half the observed lift
             </span>
-            <span className="font-display text-3xl font-bold text-accent md:text-4xl">
+            <span className="shrink-0 font-display text-2xl font-bold text-accent sm:text-3xl md:text-4xl">
               +{fmt(recovered)}
             </span>
           </div>

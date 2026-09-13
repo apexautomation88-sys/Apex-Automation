@@ -9,4 +9,10 @@ export const site = {
   tagline: "AI systems for fire & life safety contractors.",
 } as const;
 
+export const legal = {
+  entity: "Apex Automation LLC",
+  state: "Texas",
+  effectiveDate: "September 13, 2026",
+} as const;
+
 export const CTA = "Book a teardown call";

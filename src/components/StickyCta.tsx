@@ -25,6 +25,7 @@ export function StickyCta() {
 
   return (
     <div
+      inert={!show}
       className={`fixed inset-x-0 bottom-0 z-50 border-t border-hairline bg-base/90 p-4 backdrop-blur-xl transition duration-300 ease-[--ease-spring] md:hidden ${
         show ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0"
       }`}

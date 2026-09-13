@@ -10,8 +10,9 @@
 
   /* Ink */
   --color-ink: #ededef;
-  --color-muted: #8a8a94;
-  --color-faint: #5c5c66;
+  /* Both tiers clear WCAG AA (4.5:1) on base, elevated and floating surfaces. */
+  --color-muted: #a1a1aa;
+  --color-faint: #85858f;
 
   /* Panel states — the three conditions on a fire alarm control panel.
      Used as severity tags so the page reads as trade-native, not generic SaaS. */
@@ -122,6 +123,10 @@
 @keyframes node-pulse {
   0%, 100% { opacity: 0.35; transform: scale(1); }
   50%      { opacity: 1; transform: scale(1.06); }
+}
+
+[data-paused="true"] * {
+  animation-play-state: paused !important;
 }
 
 .animate-rise {

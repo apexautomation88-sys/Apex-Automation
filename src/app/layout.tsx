@@ -86,6 +86,12 @@ export default function RootLayout({
               "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E\")",
           }}
         />
+        <a
+          href="#main"
+          className="fixed left-4 top-4 z-[100] -translate-y-24 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-base transition-transform duration-200 focus-visible:translate-y-0"
+        >
+          Skip to content
+        </a>
         <div className="relative z-10">{children}</div>
       </body>
     </html>

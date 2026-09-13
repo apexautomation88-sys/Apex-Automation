@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 /**
  * The hero visual: the deficiency-to-quote path.
  *
@@ -7,7 +11,8 @@
  *
  * Orientation is responsive: a 5-across row crushes each node at 390px, so the
  * pipeline runs vertically on mobile and horizontally from `sm` up.
- * Animation is transform/opacity only, and stops under prefers-reduced-motion.
+ * Animation is transform/opacity only, stops under prefers-reduced-motion, and has
+ * a pause control — it loops indefinitely, which WCAG 2.2.2 requires be stoppable.
  */
 
 const NODES = [
@@ -44,21 +49,37 @@ function Packet({ delay }: { delay: string }) {
 }
 
 export function SystemDiagram() {
+  const [paused, setPaused] = useState(false);
+
   return (
     <div
-      role="img"
-      aria-label="The deficiency-to-quote path: a deficiency is written up, priced from your price book, approved by a human in one click, followed up by email and SMS, and signed as booked repair work."
+      data-paused={paused}
       className="relative rounded-2xl border border-hairline bg-elevated/60 p-5 shadow-[--shadow-floating] backdrop-blur-sm sm:p-7"
     >
-      <div className="mb-5 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-faint">
-        <span
-          className="h-1.5 w-1.5 rounded-full bg-accent"
-          style={{ animation: "node-pulse 2s ease-in-out infinite" }}
-        />
-        deficiency → signed repair
+      <div className="mb-5 flex items-center justify-between gap-3">
+        <p className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-faint">
+          <span
+            aria-hidden
+            className="h-1.5 w-1.5 rounded-full bg-accent"
+            style={{ animation: "node-pulse 2s ease-in-out infinite" }}
+          />
+          deficiency → signed repair
+        </p>
+        <button
+          type="button"
+          onClick={() => setPaused((p) => !p)}
+          aria-pressed={paused}
+          className="rounded-md border border-hairline px-2 py-1 font-mono text-[10px] text-muted transition-colors duration-200 hover:border-hairline-bright hover:text-ink active:translate-y-px"
+        >
+          {paused ? "Play animation" : "Pause animation"}
+        </button>
       </div>
 
-      <div className="flex flex-col items-stretch sm:flex-row">
+      <div
+        role="img"
+        aria-label="The deficiency-to-quote path: a deficiency is written up, priced from your price book, approved by a human in one click, chased by email and SMS, and signed as booked repair work."
+        className="flex flex-col items-stretch sm:flex-row"
+      >
         {NODES.map((node, i) => (
           <div
             key={node.label}
