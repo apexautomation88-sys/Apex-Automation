@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { legal, site } from "@/lib/site";
+import { site } from "@/lib/site";
+import { Entity } from "./ui";
 
 const LEGAL_LINKS = [
   { href: "/privacy", label: "Privacy" },
@@ -34,7 +35,7 @@ export function Footer() {
 
         <div className="mt-10 flex flex-col gap-4 border-t border-hairline pt-6 md:flex-row md:items-center md:justify-between">
           <p className="font-mono text-[11px] text-faint">
-            © {new Date().getFullYear()} {legal.entity}. All rights reserved.
+            © {new Date().getFullYear()} <Entity />. All rights reserved.
           </p>
           <nav aria-label="Legal">
             <ul className="flex flex-wrap gap-x-6 gap-y-2">

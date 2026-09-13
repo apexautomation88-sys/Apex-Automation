@@ -141,3 +141,12 @@ the first-Tab skip-link check, and 320px reflow after layout changes.
 **Restarting `next start`.** Stopping the background task kills only the npm wrapper
 — the `next` node process survives, keeps port 3000, and silently serves the *old*
 build. Kill whatever owns the port before restarting, or you'll test stale code.
+
+**Site URL and entity.** There is no hardcoded domain. `siteUrl` in `src/lib/site.ts`
+reads `NEXT_PUBLIC_SITE_URL`, then Vercel's `VERCEL_PROJECT_PRODUCTION_URL` (which
+becomes the custom domain once one is assigned), then localhost. Metadata, the
+sitemap, robots.txt, and social image URLs all derive from it — locally they show
+`localhost`, which is expected. The LLC name is a placeholder rendered by `<Entity />`
+with dashed placeholder styling; set `legal.entity` and `legal.entityConfirmed: true`
+once registered. Never interpolate `legal.entity` into metadata strings — search
+results would show the bracketed placeholder.

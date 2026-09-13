@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { legal } from "@/lib/site";
 
 export function Section({
   id,
@@ -100,4 +101,9 @@ export function Placeholder({ children }: { children: ReactNode }) {
       {children}
     </span>
   );
+}
+
+/** The operating entity's legal name — rendered as a placeholder until it's confirmed. */
+export function Entity() {
+  return legal.entityConfirmed ? <>{legal.entity}</> : <Placeholder>{legal.entity}</Placeholder>;
 }

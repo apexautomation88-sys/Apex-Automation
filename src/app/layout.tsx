@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
-import { site } from "@/lib/site";
+import { site, siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -22,7 +22,7 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(`https://${site.domain}`),
+  metadataBase: new URL(siteUrl),
   title: `${site.name} — AI systems for fire & life safety contractors`,
   description:
     "Your techs find the deficiencies. Most never become proposals. Apex Automation builds the deficiency-to-quote, after-hours voice, and access-coordination systems that close the gap — using your price book and your signature.",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     title: `${site.name} — AI systems for fire & life safety contractors`,
     description:
       "You're not losing money on inspections. You're losing it after the report is filed.",
-    url: `https://${site.domain}`,
+    url: siteUrl,
     siteName: site.name,
     type: "website",
   },
@@ -58,7 +58,7 @@ const jsonLd = {
   name: site.name,
   description:
     "AI automation implementation for fire & life safety contractors — deficiency-to-quote, after-hours call handling, inspection scheduling and AHJ report QA.",
-  url: `https://${site.domain}`,
+  url: siteUrl,
   email: site.email,
   serviceType: "AI automation for fire protection and life safety contractors",
   areaServed: "Worldwide",

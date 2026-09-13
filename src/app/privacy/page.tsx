@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { LegalPage, type LegalSection } from "@/components/LegalPage";
+import { Entity } from "@/components/ui";
 import { legal, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `Privacy Policy — ${site.name}`,
-  description: `How ${legal.entity} collects, uses, and protects information on this website.`,
+  description: `How ${site.name} collects, uses, and protects information on this website.`,
 };
 
 const email = <a href={`mailto:${site.email}`}>{site.email}</a>;
@@ -18,7 +19,7 @@ const sections: LegalSection[] = [
       <>
         <p>
           This policy covers this website and the information you share with us when
-          you book a call or email us. It is operated by {legal.entity}, a {legal.state}{" "}
+          you book a call or email us. It is operated by <Entity />, a {legal.state}{" "}
           limited liability company (“Apex,” “we,” “us”).
         </p>
         <p>
@@ -229,7 +230,7 @@ const sections: LegalSection[] = [
     title: "Contact",
     content: (
       <p>
-        Questions or requests about your privacy: {email}. {legal.entity},{" "}
+        Questions or requests about your privacy: {email}. <Entity />,{" "}
         {legal.state}.
       </p>
     ),

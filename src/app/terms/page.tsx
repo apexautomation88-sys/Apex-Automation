@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { LegalPage, type LegalSection } from "@/components/LegalPage";
+import { Entity } from "@/components/ui";
 import { legal, site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -18,7 +19,7 @@ const sections: LegalSection[] = [
       <>
         <p>
           These terms govern your use of this website, which is operated by{" "}
-          {legal.entity}, a {legal.state} limited liability company (“Apex,” “we,”
+          <Entity />, a {legal.state} limited liability company (“Apex,” “we,”
           “us”). By using the site, you agree to them. If you don’t agree, please don’t
           use the site.
         </p>
@@ -227,7 +228,7 @@ const sections: LegalSection[] = [
     title: "Contact",
     content: (
       <p>
-        Questions about these terms: {email}. {legal.entity}, {legal.state}.
+        Questions about these terms: {email}. <Entity />, {legal.state}.
       </p>
     ),
   },

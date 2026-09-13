@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Nav } from "./Nav";
 import { Footer } from "./Footer";
 import { legal } from "@/lib/site";
+import { Entity } from "./ui";
 
 export type LegalSection = { id: string; title: string; content: ReactNode };
 
@@ -40,7 +41,7 @@ export function LegalPage({
             </p>
             <h1 className="text-[clamp(2.25rem,5vw,3.5rem)] text-gradient-ink">{title}</h1>
             <p className="mt-4 font-mono text-xs text-faint">
-              Effective {legal.effectiveDate} · {legal.entity}
+              Effective {legal.effectiveDate} · <Entity />
             </p>
             <div className="mt-6 text-lg text-muted">{intro}</div>
           </header>

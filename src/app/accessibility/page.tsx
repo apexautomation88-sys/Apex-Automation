@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LegalPage, type LegalSection } from "@/components/LegalPage";
-import { legal, site } from "@/lib/site";
+import { Entity } from "@/components/ui";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `Accessibility Statement — ${site.name}`,
@@ -15,7 +16,7 @@ const sections: LegalSection[] = [
     title: "Our commitment",
     content: (
       <p>
-        {legal.entity} wants everyone to be able to use this website, including people
+        <Entity /> wants everyone to be able to use this website, including people
         who rely on screen readers, keyboard navigation, magnification, or reduced
         motion. We aim to meet the{" "}
         <a href="https://www.w3.org/TR/WCAG22/">Web Content Accessibility Guidelines

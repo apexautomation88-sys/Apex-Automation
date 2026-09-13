@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { LegalPage, type LegalSection } from "@/components/LegalPage";
+import { Entity } from "@/components/ui";
 import { legal, site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -152,7 +153,7 @@ const sections: LegalSection[] = [
     content: (
       <p>
         If we ever add cookies of our own, we will update this policy and its effective
-        date before doing so. Questions: {email}. {legal.entity}, {legal.state}.
+        date before doing so. Questions: {email}. <Entity />, {legal.state}.
       </p>
     ),
   },
